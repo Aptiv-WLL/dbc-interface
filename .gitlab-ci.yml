@@ -1,0 +1,31 @@
+variables:
+ BUILD_: C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe
+ OUTPUT_: $CI_PROJECT_DIR\build\dbc-interface\release
+ TEST_: C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe
+ 
+stages:
+ - pre_script
+ - build
+ - test
+
+NuGet Restore:
+ stage: pre_script
+ script:
+    #- setx BUILD "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe"
+    #- echo %BUILD%
+    - set NUGET="C:\Program Files (x86)\NuGet\nuget.exe"
+    - '%NUGET% restore -NonInteractive'
+
+Build:
+ stage: build
+ script:
+    - '"%BUILD_%" /p:Configuration="Release" /p:Platform="Any CPU" /p:OutputPath="%OUTPUT_%" "DBCInterface.sln"'
+ artifacts:
+    paths:
+        - '%OUTPUT_%'
+    expire_in: 10 minutes
+
+Test:
+ stage: test
+ script:
+    - '"%TEST_%" %OUTPUT_%\DBCInterfaceTests.dll'

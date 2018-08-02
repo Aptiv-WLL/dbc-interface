@@ -1,0 +1,400 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GenericMessaging</name>
+    </assembly>
+    <members>
+        <member name="T:Aptiv.Messaging.Async.AsyncSendMessageDelegate">
+            <summary>
+            A delegate type which Sends a Message, intended
+            for async scenarios.
+            </summary>
+            <param name="message">The message to send.</param>
+            <returns>An awaitable task.</returns>
+        </member>
+        <member name="T:Aptiv.Messaging.Async.AsyncSendMessageDelegate`1">
+            <summary>
+            A delegate type which Sends a Message of a specified type, intended
+            for async scenarios.
+            </summary>
+            <typeparam name="TMessage">The type of message to send.</typeparam>
+            <param name="message">The message to send.</param>
+            <returns>An awaitable task.</returns>
+        </member>
+        <member name="T:Aptiv.Messaging.IntDescriptor">
+            <summary>
+            Indicates whether the value of the signal will be signed or unsigned.
+            </summary>
+        </member>
+        <member name="F:Aptiv.Messaging.IntDescriptor.Unsigned">
+            <summary>
+            No sign bits.
+            </summary>
+        </member>
+        <member name="F:Aptiv.Messaging.IntDescriptor.Signed">
+            <summary>
+            msb will be sign bit.
+            </summary>
+        </member>
+        <member name="T:Aptiv.Messaging.ByteOrder">
+            <summary>
+            The order of consecutive bytes in the signal.
+            </summary>
+        </member>
+        <member name="F:Aptiv.Messaging.ByteOrder.Motorola">
+            <summary>
+            Big Endian Byte order.
+            </summary>
+        </member>
+        <member name="F:Aptiv.Messaging.ByteOrder.Intel">
+            <summary>
+            Little Endian Byte order.
+            </summary>
+        </member>
+        <member name="T:Aptiv.Messaging.SendType">
+            <summary>
+            Indicates if a message is periodic or not.
+            </summary>
+        </member>
+        <member name="F:Aptiv.Messaging.SendType.INSTANTANEOUS">
+            <summary>
+            Message is sent once.
+            </summary>
+        </member>
+        <member name="F:Aptiv.Messaging.SendType.PERIODIC">
+            <summary>
+            Message is sent on an interval.
+            </summary>
+        </member>
+        <member name="T:Aptiv.Messaging.Extentensions.IDeviceSourceAsyncExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aptiv.Messaging.Extentensions.IDeviceSourceAsyncExtensions.ConnectAsync(Aptiv.Interfaces.IDeviceSource,System.String)">
+            <summary>
+            Instructs the device source to connect asynchronously and returns once
+            the reply is received.
+            </summary>
+            <param name="deviceSource">The device source to call Connect on.</param>
+            <param name="name">The name to pass to the device.</param>
+            <returns>True for success.</returns>
+        </member>
+        <member name="M:Aptiv.Messaging.Extentensions.IDeviceSourceAsyncExtensions.ConnectAsync(Aptiv.Interfaces.IDeviceSource,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Instructs the device source to connect asynchronously and returns once
+            the reply is received.
+            </summary>
+            <param name="deviceSource">The device source to call Connect on.</param>
+            <param name="name">The name to pass to the source.</param>
+            <param name="token">The token to observe.</param>
+            <returns>True for success.</returns>
+        </member>
+        <member name="M:Aptiv.Messaging.Extentensions.IDeviceSourceAsyncExtensions.ConnectAsync``1(Aptiv.Interfaces.IDeviceSource{``0},System.String)">
+            <summary>
+            Instructs the device source to connect asynchronously and returns once
+            the reply is received.
+            </summary>
+            <param name="deviceSource">The device source to call Connect on.</param>
+            <param name="name">The name to pass to the source.</param>
+            <returns>True for success.</returns>
+        </member>
+        <member name="M:Aptiv.Messaging.Extentensions.IDeviceSourceAsyncExtensions.ConnectAsync``1(Aptiv.Interfaces.IDeviceSource{``0},System.String,System.Threading.CancellationToken)">
+            <summary>
+            Instructs the device source to connect asynchronously and returns once
+            the reply is received.
+            </summary>
+            <param name="deviceSource">The device source to call Connect on.</param>
+            <param name="name">The name to pass to the source.</param>
+            <param name="token">The token to observe.</param>
+            <returns>True for success.</returns>
+        </member>
+        <member name="T:Aptiv.Messaging.IMessage">
+            <summary>
+            The generic interface for a message object. A message object is assumed
+            to have some structure, of which is exposed interior elements of which
+            each message of a defined type is composed.
+            </summary>
+        </member>
+        <member name="T:Aptiv.Messaging.IMessage`1">
+            <summary>
+            The generic interface for a message object. A message object is assumed
+            to have some structure, of which is exposed interior elements of which
+            each message of a defined type is composed.
+            </summary>
+            <typeparam name="TComponent">The type of the message's interior
+            elements</typeparam>
+        </member>
+        <member name="T:Aptiv.Messaging.IPattern">
+            <summary>
+            Represents a generic pattern which is compared to a message.
+            </summary>
+        </member>
+        <member name="M:Aptiv.Messaging.IPattern.IsMatch(Aptiv.Messaging.IMessage)">
+            <summary>
+            Determines if the provided message is a match of this pattern.
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Aptiv.Messaging.IPattern`1">
+            <summary>
+            Represents a generic pattern which is compared to a message of a
+            specified type.
+            </summary>
+            <typeparam name="TMessage">The specific type of IMessage to compare to.</typeparam>
+        </member>
+        <member name="M:Aptiv.Messaging.IPattern`1.IsMatch(`0)">
+            <summary>
+            Determines if the provided message is a match of this pattern.
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Aptiv.Messaging.IPeriodics">
+            <summary>
+            Descibes a collection of messages which are sent periodically.
+            </summary>
+        </member>
+        <member name="T:Aptiv.Messaging.IPeriodics`1">
+            <summary>
+            Descibes a collection of messages which are sent periodically.
+            </summary>
+            <typeparam name="TMessage">The type of messages being sent.</typeparam>
+        </member>
+        <member name="T:Aptiv.Messaging.SendMessageDelegate">
+            <summary>
+            A delegate type which Sends a Message which inherits from the IMessage
+            interface.
+            </summary>
+            <param name="message">The message to send.</param>
+        </member>
+        <member name="T:Aptiv.Messaging.SendMessageDelegate`1">
+            <summary>
+            A delegate type which Sends a Message of a specified type.
+            </summary>
+            <param name="message">The message to send.</param>
+        </member>
+        <member name="T:Aptiv.Messaging.SendMessagePeriodicDelegate">
+            <summary>
+            The delegate for sending messages with a <c>Periodics</c> instance.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="T:Aptiv.Messaging.SendMessagePeriodicDelegate`1">
+            <summary>
+            The delegate for sending messages with a <c>Periodics</c> instance.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="T:Aptiv.Messages.MessageReceivedArgs">
+            <summary>
+            Event Args thrown when a message is received.
+            </summary>
+        </member>
+        <member name="F:Aptiv.Messages.MessageReceivedArgs.Received">
+            <summary>
+            The message received which prompted the event.
+            </summary>
+        </member>
+        <member name="M:Aptiv.Messages.MessageReceivedArgs.#ctor(Aptiv.Messaging.IMessage)">
+            <summary>
+            Construct a new instance with the received message.
+            </summary>
+            <param name="received"></param>
+        </member>
+        <member name="T:Aptiv.Messages.MessageReceivedArgs`1">
+            <summary>
+            Event Args thrown when a message is received.
+            </summary>
+        </member>
+        <member name="F:Aptiv.Messages.MessageReceivedArgs`1.Received">
+            <summary>
+            The message received which prompted the event.
+            </summary>
+        </member>
+        <member name="M:Aptiv.Messages.MessageReceivedArgs`1.#ctor(`0)">
+            <summary>
+            Construct a new instance with the received message.
+            </summary>
+            <param name="received"></param>
+        </member>
+        <member name="T:Aptiv.Interfaces.IDevice_Async_Extensions">
+            <summary>
+            Provides Async wrapper methods for Device action which take a while.
+            </summary>
+        </member>
+        <member name="M:Aptiv.Interfaces.IDevice_Async_Extensions.ConnectAsync(Aptiv.Interfaces.IDevice)">
+            <summary>
+            Instructs the device to connect asynchronously and returns once
+            the reply is received.
+            </summary>
+            <param name="device">The device to call Connect on.</param>
+            <returns>True for success.</returns>
+        </member>
+        <member name="M:Aptiv.Interfaces.IDevice_Async_Extensions.ConnectAsync(Aptiv.Interfaces.IDevice,System.Threading.CancellationToken)">
+            <summary>
+            Instructs the device to connect asynchronously and returns once
+            the reply is received.
+            </summary>
+            <param name="device">The device to call Connect on.</param>
+            <param name="token">The token to observe.</param>
+            <returns>True for success.</returns>
+        </member>
+        <member name="M:Aptiv.Interfaces.IDevice_Async_Extensions.ConnectAsync``1(Aptiv.Interfaces.IDevice{``0})">
+            <summary>
+            Instructs the device to connect asynchronously and returns once
+            the reply is received.
+            </summary>
+            <param name="device">The device to call Connect on.</param>
+            <returns>True for success.</returns>
+        </member>
+        <member name="M:Aptiv.Interfaces.IDevice_Async_Extensions.ConnectAsync``1(Aptiv.Interfaces.IDevice{``0},System.Threading.CancellationToken)">
+            <summary>
+            Instructs the device to connect asynchronously and returns once
+            the reply is received.
+            </summary>
+            <param name="device">The device to call Connect on.</param>
+            <param name="token">The token to observe.</param>
+            <returns>True for success.</returns>
+        </member>
+        <member name="T:Aptiv.Interfaces.IDevice">
+            <summary>
+            Descibes a generic device interface which sends and receives IMessage's.
+            </summary>
+        </member>
+        <member name="P:Aptiv.Interfaces.IDevice.Name">
+            <summary>
+            The identifier for this device.
+            </summary>
+        </member>
+        <member name="P:Aptiv.Interfaces.IDevice.IsConnected">
+            <summary>
+            Returns true when this device is able to send and receive messages.
+            </summary>
+        </member>
+        <member name="M:Aptiv.Interfaces.IDevice.Connect">
+            <summary>
+            Instructs the device to connect.
+            </summary>
+            <returns>True if the device has successfully connected.</returns>
+        </member>
+        <member name="M:Aptiv.Interfaces.IDevice.Disconnect">
+            <summary>
+            Instructs the device to disconnect.
+            </summary>
+            <returns>True if the device has successfully disconnected.</returns>
+        </member>
+        <member name="M:Aptiv.Interfaces.IDevice.Send(Aptiv.Messaging.IMessage)">
+            <summary>
+            Sends a message to the device
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="E:Aptiv.Interfaces.IDevice.Handle">
+            <summary>
+            Obtains the handle which calls functions when this device receives
+            messages.
+            </summary>
+        </member>
+        <member name="T:Aptiv.Interfaces.IDevice`1">
+            <summary>
+            Descibes a generic device interface which sends and receives IMessage's.
+            </summary>
+            <typeparam name="TMessage">The type of message to send and receive.</typeparam>
+        </member>
+        <member name="P:Aptiv.Interfaces.IDevice`1.Name">
+            <summary>
+            The identifier for this device.
+            </summary>
+        </member>
+        <member name="P:Aptiv.Interfaces.IDevice`1.IsConnected">
+            <summary>
+            Returns true when this device is able to send and receive messages.
+            </summary>
+        </member>
+        <member name="M:Aptiv.Interfaces.IDevice`1.Connect">
+            <summary>
+            Instructs the device to connect.
+            </summary>
+            <returns>True if the device has successfully connected.</returns>
+        </member>
+        <member name="M:Aptiv.Interfaces.IDevice`1.Disconnect">
+            <summary>
+            Instructs the device to disconnect.
+            </summary>
+            <returns>True if the device has successfully disconnected.</returns>
+        </member>
+        <member name="M:Aptiv.Interfaces.IDevice`1.Send(`0)">
+            <summary>
+            Sends a message to the device
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="E:Aptiv.Interfaces.IDevice`1.Handle">
+            <summary>
+            Obtains the handle which calls functions when this device receives
+            messages.
+            </summary>
+        </member>
+        <member name="T:Aptiv.Interfaces.IDeviceSource">
+            <summary>
+            An interface for an IDevice source.
+            </summary>
+        </member>
+        <member name="P:Aptiv.Interfaces.IDeviceSource.Devices">
+            <summary>
+            Obtains the collection of devices available on this source.
+            </summary>
+        </member>
+        <member name="P:Aptiv.Interfaces.IDeviceSource.IsConnected">
+            <summary>
+            Returns true if the source is connected.
+            </summary>
+        </member>
+        <member name="M:Aptiv.Interfaces.IDeviceSource.Connect(System.String)">
+            <summary>
+            Attempts to connect to the device source.
+            </summary>
+            <param name="connectee">The identifier of the connectee.</param>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:Aptiv.Interfaces.IDeviceSource.Disconnect(System.String)">
+            <summary>
+            Attempts to disconnect from the device source.
+            </summary>
+            <param name="disconnectee">The identifier of the disconnectee.</param>
+            <returns>True on success.</returns>
+        </member>
+        <member name="T:Aptiv.Interfaces.IDeviceSource`1">
+            <summary>
+            An interface for an IDevice source.
+            </summary>
+            <typeparam name="TMessage"></typeparam>
+        </member>
+        <member name="P:Aptiv.Interfaces.IDeviceSource`1.Devices">
+            <summary>
+            Obtains the collection of devices available on this source.
+            </summary>
+        </member>
+        <member name="P:Aptiv.Interfaces.IDeviceSource`1.IsConnected">
+            <summary>
+            Returns true if the source is connected.
+            </summary>
+        </member>
+        <member name="M:Aptiv.Interfaces.IDeviceSource`1.Connect(System.String)">
+            <summary>
+            Attempts to connect to the device source.
+            </summary>
+            <param name="connectee">The identifier of the connectee.</param>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:Aptiv.Interfaces.IDeviceSource`1.Disconnect(System.String)">
+            <summary>
+            Attempts to disconnect from the device source.
+            </summary>
+            <param name="disconnectee">The identifier of the disconnectee.</param>
+            <returns>True on success.</returns>
+        </member>
+    </members>
+</doc>

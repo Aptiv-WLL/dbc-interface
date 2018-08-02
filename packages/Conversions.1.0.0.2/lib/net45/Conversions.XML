@@ -1,0 +1,784 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Conversions</name>
+    </assembly>
+    <members>
+        <member name="T:Global.Conversions.Conversions">
+            <summary>
+            The IntegerConverisions class contains conversion methods from integral data types to hexidecimal string, binary strings, and byte arrays, and vice versa.
+            </summary>
+        </member>
+        <member name="M:Global.Conversions.Conversions.CleanBinaryString(System.String)">
+            <summary>
+            Removes whitespace. Checks for invalid characters, null parameter, empty string.
+            </summary>
+            <param name="bin">Binary string.</param>
+            <returns>Clean binary string.</returns>
+            <exception cref="T:System.ArgumentNullException">When binary string is null.</exception>
+            <exception cref="T:System.OverflowException">When binary string is empty or longer than 64.</exception>
+            <exception cref="T:System.FormatException">When binary string contains invalid charachters.</exception>
+        </member>
+        <member name="M:Global.Conversions.Conversions.PadBinaryToNextByte(System.String)">
+            <summary>
+            Pads a binary string so that all the bits in the leftmost byte are represented. 
+            This class is internal because it assumes the use of the CleanBinaryString method before use. 
+            </summary>
+            <param name="bin">Binary string.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.PadBinaryToNextIntegral(System.String)">
+            <summary>
+            Pads a binary stirng so that all the bits in the integral are represented."
+            </summary>
+            <param name="bin">Binary string</param>
+            <returns></returns>
+            <exception cref="T:System.OverflowException"></exception>
+        </member>
+        <member name="M:Global.Conversions.Conversions.PadBinaryToNextIntegral(System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="bin"></param>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.PadNegativeBinaryToNextIntegral(System.String)">
+            <summary>
+            Pads a binary stirng so that all the bits in the integral are represented."
+            </summary>
+            <param name="bin">Binary string</param>
+            <returns></returns>
+            <exception cref="T:System.OverflowException"></exception>
+        </member>
+        <member name="M:Global.Conversions.Conversions.PadNegativeBinaryToNextIntegral(System.String,System.Int32)">
+            <summary>
+            Pads a binary stirng so that all the bits in the integral are represented."
+            </summary>
+            <param name="bin">Binary string</param>
+            <param name="length">Desired minimum length of binary string.</param>
+            <returns></returns>
+            <exception cref="T:System.OverflowException"></exception>
+        </member>
+        <member name="M:Global.Conversions.Conversions.CleanHexString(System.String)">
+            <summary>
+            Removes spaces, hyphens, and hexadecimal indicators from string.
+            </summary>
+            <param name="hexString"></param>
+            <returns>Plain format hex string.</returns>
+            <exception cref="T:System.OverflowException">When hexString is empty</exception>
+            <exception cref="T:System.ArgumentNullException">When hexString is null.</exception>
+            <exception cref="T:System.FormatException"></exception>
+        </member>
+        <member name="M:Global.Conversions.Conversions.PadHexadecimalToNextIntegral(System.String)">
+            <summary>
+            Takes a hex string and converts it to its two's complement.
+            </summary>
+            <param name="hex">Hexadecimal string.</param>
+            <returns>Two's complement.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.PadHexadecimalToNextIntegral(System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="hex"></param>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.PadNegativeHexadecimalToNextIntegral(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="hex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.PadNegativeHexadecimalToNextIntegral(System.String,System.Int32)">
+            <summary>
+            Takes a hex string and converts it to its two's complement.
+            </summary>
+            <param name="hex">Hexadecimal string.</param>
+            <param name="length">Desired minimum length of string.</param>
+            <returns>Two's complement.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.EvenNibbles(System.String)">
+            <summary>
+            Pads a hex string so that there is an even number of nibbles.
+            </summary>
+            <param name="hex">Hexadecimal string.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToHexString(System.Byte[])">
+            <summary>
+            Converts a byte array into a hex string. Consider using FastByteArraytoHexString
+            class for successive usage. 
+            </summary>
+            <returns>Hexadecimal string without dashes, spaces, or hex indicator.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToHexString(System.SByte)">
+            <summary>
+            Converts an integral data type to a hexidecimal string of minimal length.
+            </summary>
+            <param name="num">Integer to be converted.</param>
+            <returns>Returns hexidecimal string of minimal length.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToHexString(System.Int16)">
+            <summary>
+            Converts an integral data type to a hexidecimal string of minimal length.
+            </summary>
+            <param name="num">Integer to be converted.</param>
+            <returns>Returns hexidecimal string of minimal length.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToHexString(System.Int32)">
+            <summary>
+            Converts an integral data type to a hexidecimal string of minimal length.
+            </summary>
+            <param name="num">Integer to be converted.</param>
+            <returns>Returns hexidecimal string of minimal length.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToHexString(System.Int64)">
+            <summary>
+            Converts an integral data type to a hexidecimal string of minimal length.
+            </summary>
+            <param name="num">Integer to be converted.</param>
+            <returns>Returns hexidecimal string of minimal length.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToHexString(System.SByte,System.Int32)">
+            <summary>
+            Converts an unsigned integral to a hexadecimal string of desired length if possible.
+            </summary>
+            <param name="num">Integer to be converted.</param>
+            <param name="length">Desired length of returned hexadecimal string.</param>
+            <returns>Hexadecimal string.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToHexString(System.Int16,System.Int32)">
+            <summary>
+            Converts an unsigned integral to a hexadecimal string of desired length if possible.
+            </summary>
+            <param name="num">Integer to be converted.</param>
+            <param name="length">Desired length of returned hexadecimal string.</param>
+            <returns>Hexadecimal string.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToHexString(System.Int32,System.Int32)">
+            <summary>
+            Converts an unsigned integral to a hexadecimal string of desired length if possible.
+            </summary>
+            <param name="num">Integer to be converted.</param>
+            <param name="length">Desired length of returned hexadecimal string.</param>
+            <returns>Hexadecimal string.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToHexString(System.Int64,System.Int32)">
+            <summary>
+            Converts an unsigned integral to a hexadecimal string of desired length if possible.
+            </summary>
+            <param name="num">Integer to be converted.</param>
+            <param name="length">Desired length of returned hexadecimal string.</param>
+            <returns>Hexadecimal string.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToHexString(System.Byte)">
+            <summary>
+            Converts an unsigned integral to a hexadecimal string of minimal length.
+            </summary>
+            <param name="num">Integer to be converted.</param>
+            <returns>Hexidecimal string of minimal length.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToHexString(System.UInt16)">
+            <summary>
+            Converts an unsigned integral to a hexadecimal string of minimal length.
+            </summary>
+            <param name="num">Integer to be converted.</param>
+            <returns>Hexidecimal string of minimal length.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToHexString(System.UInt32)">
+            <summary>
+            Converts an unsigned integral to a hexadecimal string of minimal length.
+            </summary>
+            <param name="num">Integer to be converted.</param>
+            <returns>Hexidecimal string of minimal length.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToHexString(System.UInt64)">
+            <summary>
+            Converts an unsigned integral to a hexadecimal string of minimal length.
+            </summary>
+            <param name="num">Integer to be converted.</param>
+            <returns>Hexidecimal string of minimal length.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToHexString(System.Byte,System.Int32)">
+            <summary>
+            Converts an unsigned integral to a hexadecimal string of desired length.
+            </summary>
+            <param name="num">Integer to be converted.</param>
+            <param name="length">Desired length of returned hexadecimal string.</param>
+            <returns>Hexadecimal string.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToHexString(System.UInt16,System.Int32)">
+            <summary>
+            Converts an unsigned integral to a hexadecimal string of desired length.
+            </summary>
+            <param name="num">Integer to be converted.</param>
+            <param name="length">Desired length of returned hexadecimal string.</param>
+            <returns>Hexadecimal string.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToHexString(System.UInt32,System.Int32)">
+            <summary>
+            Converts an unsigned integral to a hexadecimal string of desired length.
+            </summary>
+            <param name="num">Integer to be converted.</param>
+            <param name="length">Desired length of returned hexadecimal string.</param>
+            <returns>Hexadecimal string.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToHexString(System.UInt64,System.Int32)">
+            <summary>
+            Converts an unsigned integral to a hexadecimal string of desired length.
+            </summary>
+            <param name="num">Integer to be converted.</param>
+            <param name="length">Desired length of returned hexadecimal string.</param>
+            <returns>Hexadecimal string.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.HexStringToSByte(System.String)">
+            <summary>
+            Converts a hexadeciaml string to an signed byte.
+            </summary>
+            <param name="hex"></param>
+            <exception cref="T:System.OverflowException">Thrown when the given string contains more bytes than an sbyte can represent.</exception>
+            <returns>Hexadecimal string.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.HexStringToShort(System.String)">
+            <summary>
+            Converts a hexadeciaml string to a short.
+            </summary>
+            <param name="hex"></param>
+            <exception cref="T:System.OverflowException">Thrown when the given string contains more bytes than a short can represent.</exception>
+        </member>
+        <member name="M:Global.Conversions.Conversions.HexStringToInt(System.String)">
+            <summary>
+            Converts a hexadeciaml string to an int.
+            </summary>
+            <param name="hex"></param>
+            <exception cref="T:System.OverflowException">Thrown when the given string contains more bytes than an int can represent.</exception>
+        </member>
+        <member name="M:Global.Conversions.Conversions.HexStringToLong(System.String)">
+            <summary>
+            Converts a hexadeciaml string to a long.
+            </summary>
+            <param name="hex"></param>
+            <exception cref="T:System.OverflowException">Thrown when the given string contains more bytes than a long can represent.</exception>
+        </member>
+        <member name="M:Global.Conversions.Conversions.HexStringToByte(System.String)">
+            <summary>
+            Converts a hexadeciaml string to a byte.
+            </summary>
+            <param name="hex"></param>
+            <exception cref="T:System.OverflowException">Thrown when the given string contains more bytes than a byte can represent.</exception>
+        </member>
+        <member name="M:Global.Conversions.Conversions.HexStringToUShort(System.String)">
+            <summary>
+            Converts a hexadeciaml string to a unsigned short.
+            </summary>
+            <param name="hex"></param>
+            <exception cref="T:System.OverflowException">Thrown when the given string contains more bytes than an unsigned short can represent.</exception>
+        </member>
+        <member name="M:Global.Conversions.Conversions.HexStringToUInt(System.String)">
+            <summary>
+            Converts a hexadeciaml string to a unsigned int.
+            </summary>
+            <param name="hex"></param>
+            <exception cref="T:System.OverflowException">Thrown when the given string contains more bytes than an unsigned long can represent.</exception>
+        </member>
+        <member name="M:Global.Conversions.Conversions.HexStringToULong(System.String)">
+            <summary>
+            Converts a hexadeciaml string to an unsigned long.
+            </summary>
+            <param name="hex"></param>
+            <exception cref="T:System.OverflowException">Thrown when the given string contains more bytes than an unsigned long can represent.</exception>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToByteArray(System.Int32)">
+            <summary>
+            Converts an integral data type to a byte array.
+            </summary>
+            <param name="num">Integer to be converted</param>
+            <returns>Byte array of length 4</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToByteArray(System.UInt32)">
+            <summary>
+            Converts an integral data type to a byte array.
+            </summary>
+            <param name="num">Integer to be converted</param>
+            <returns>Byte array of length 4.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToByteArray(System.UInt64)">
+            <summary>
+            Converts an integral data type to a byte array.
+            </summary>
+            <param name="num">Integer to be converted</param>
+            <returns>Byte array of length 8.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToByteArray(System.Int16)">
+            <summary>
+            Converts an integral data type to a byte array.
+            </summary>
+            <param name="num">Integer to be converted</param>
+            <returns>Byte array of length 2.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToByteArray(System.UInt16)">
+            <summary>
+            Converts an integral data type to a byte array.
+            </summary>
+            <param name="num">Integer to be converted</param>
+            <returns>Byte array of length 2.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToByteArray(System.Int64)">
+            <summary>
+            Converts an integral data type to a byte array.
+            </summary>
+            <param name="num">Integer to be converted</param>
+            <returns>Byte array of length 8.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToByteArray(System.Byte)">
+            <summary>
+            Converts an integral data type to a byte array.
+            </summary>
+            <param name="num">Integer to be converted</param>
+            <returns>Byte array of length 2.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToByteArray(System.SByte)">
+            <summary>
+            Converts an integral data type to a byte array.
+            </summary>
+            <param name="num">Integer to be converted</param>
+            <returns>Byte array of length 2.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ByteArrayToUShort(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Converts a specified segment of a byte array into a ushort.
+            </summary>
+            <remarks>ByteArrayToUShort(byte[] ary, int startIndex, int length = 0) has the same functionality as
+            (ushort) BitConverter.ToInt16(byte[] value, int startIndex), except you won't get accidentally skrew
+            up your code when you realize your machine is littleEndian.
+            The length parameter adds extra functionality of being able to convert fewer than 2 bytes if desired.</remarks>
+            <param name="ary">Byte array.</param>
+            <param name="startIndex">The start index of the segment in the byte array to be converted.</param>
+            <param name="length">The length of the segment to be converted.</param>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ByteArrayToUShort(System.Byte[],System.Int32)">
+            <summary>
+            Converts a specified segment of a byte array into a ushort.
+            </summary>
+            <remarks>ByteArrayToUShort(byte[] ary, int startIndex, int length = 0) has the same functionality as
+            (ushort) BitConverter.ToInt16(byte[] value, int startIndex), except you won't get accidentally skrew
+            up your code when you realize your machine is littleEndian.
+            The length parameter adds extra functionality of being able to convert fewer than 2 bytes if desired.</remarks>
+            <param name="ary">Byte array.</param>
+            <param name="startIndex">The start index of the segment in the byte array to be converted.</param>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ByteArrayToUShort(System.Byte[])">
+            <summary>
+            Converts a specified segment of a byte array into a ushort.
+            </summary>
+            <remarks>ByteArrayToUShort(byte[] ary, int startIndex, int length = 0) has the same functionality as
+            (ushort) BitConverter.ToInt16(byte[] value, int startIndex), except you won't get accidentally skrew
+            up your code when you realize your machine is littleEndian.
+            The length parameter adds extra functionality of being able to convert fewer than 2 bytes if desired.</remarks>
+            <param name="ary">Byte array.</param>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ByteArrayToShort(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Converts a specified segment of a byte array into a short.
+            </summary>
+            <remarks>ByteArrayToShort(byte[] ary, int startIndex, int length = 0) has the same functionality as
+            (short) BitConverter.ToInt16(byte[] value, int startIndex), except you won't get accidentally skrew
+            up your code when you realize your machine is littleEndian.
+            The length parameter adds extra functionality of being able to convert fewer than 2 bytes if desired.</remarks>
+            <param name="ary">Byte array.</param>
+            <param name="startIndex">The start index of the segment in the byte array to be converted.</param>
+            <param name="length">The length of the segment to be converted.</param>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ByteArrayToShort(System.Byte[],System.Int32)">
+            <summary>
+            Converts a specified segment of a byte array into a short.
+            </summary>
+            <remarks>ByteArrayToShort(byte[] ary, int startIndex, int length = 0) has the same functionality as
+            (short) BitConverter.ToInt16(byte[] value, int startIndex), except you won't get accidentally skrew
+            up your code when you realize your machine is littleEndian.
+            The length parameter adds extra functionality of being able to convert fewer than 2 bytes if desired.</remarks>
+            <param name="ary">Byte array.</param>
+            <param name="startIndex">The start index of the segment in the byte array to be converted.</param>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ByteArrayToShort(System.Byte[])">
+            <summary>
+            Converts a specified segment of a byte array into a short.
+            </summary>
+            <remarks>ByteArrayToShort(byte[] ary, int startIndex, int length = 0) has the same functionality as
+            (short) BitConverter.ToInt16(byte[] value, int startIndex), except you won't get accidentally skrew
+            up your code when you realize your machine is littleEndian.
+            The length parameter adds extra functionality of being able to convert fewer than 2 bytes if desired.</remarks>
+            <param name="ary">Byte array.</param>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ByteArrayToUInt(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Converts a specified segment of a byte array into a uint.
+            </summary>
+            <remarks>ByteArrayToUInt(byte[] ary, int startIndex, int length = 0) has the same functionality as
+            (uint) BitConverter.ToInt16(byte[] value, int startIndex), except you won't get accidentally skrew
+            up your code when you realize your machine is littleEndian.
+            The length parameter adds extra functionality of being able to convert fewer than 2 bytes if desired.</remarks>
+            <param name="ary">Byte array.</param>
+            <param name="startIndex">The start index of the segment in the byte array to be converted.</param>
+            <param name="length">The length of the segment to be converted.</param>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ByteArrayToUInt(System.Byte[],System.Int32)">
+            <summary>
+            Converts a specified segment of a byte array into a uint.
+            </summary>
+            <remarks>ByteArrayToUInt(byte[] ary, int startIndex, int length = 0) has the same functionality as
+            (uint) BitConverter.ToInt16(byte[] value, int startIndex), except you won't get accidentally skrew
+            up your code when you realize your machine is littleEndian.
+            The length parameter adds extra functionality of being able to convert fewer than 2 bytes if desired.</remarks>
+            <param name="ary">Byte array.</param>
+            <param name="startIndex">The start index of the segment in the byte array to be converted.</param>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ByteArrayToUInt(System.Byte[])">
+            <summary>
+            Converts a specified segment of a byte array into a uint.
+            </summary>
+            <remarks>ByteArrayToUInt(byte[] ary, int startIndex, int length = 0) has the same functionality as
+            (uint) BitConverter.ToInt16(byte[] value, int startIndex), except you won't get accidentally skrew
+            up your code when you realize your machine is littleEndian.
+            The length parameter adds extra functionality of being able to convert fewer than 2 bytes if desired.</remarks>
+            <param name="ary">Byte array.</param>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ByteArrayToInt(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Converts a specified segment of a byte array into a int.
+            </summary>
+            <remarks>ByteArrayToInt(byte[] ary, int startIndex, int length = 0) has the same functionality as
+            (int) BitConverter.ToInt16(byte[] value, int startIndex), except you won't get accidentally skrew
+            up your code when you realize your machine is littleEndian.
+            The length parameter adds extra functionality of being able to convert fewer than 2 bytes if desired.</remarks>
+            <param name="ary">Byte array.</param>
+            <param name="startIndex">The start index of the segment in the byte array to be converted.</param>
+            <param name="length">The length of the segment to be converted.</param>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ByteArrayToInt(System.Byte[],System.Int32)">
+            <summary>
+            Converts a specified segment of a byte array into a int.
+            </summary>
+            <remarks>ByteArrayToInt(byte[] ary, int startIndex, int length = 0) has the same functionality as
+            (int) BitConverter.ToInt16(byte[] value, int startIndex), except you won't get accidentally skrew
+            up your code when you realize your machine is littleEndian.
+            The length parameter adds extra functionality of being able to convert fewer than 2 bytes if desired.</remarks>
+            <param name="ary">Byte array.</param>
+            <param name="startIndex">The start index of the segment in the byte array to be converted.</param>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ByteArrayToInt(System.Byte[])">
+            <summary>
+            Converts a specified segment of a byte array into a int.
+            </summary>
+            <remarks>ByteArrayToInt(byte[] ary, int startIndex, int length = 0) has the same functionality as
+            (int) BitConverter.ToInt16(byte[] value, int startIndex), except you won't get accidentally skrew
+            up your code when you realize your machine is littleEndian.
+            The length parameter adds extra functionality of being able to convert fewer than 2 bytes if desired.</remarks>
+            <param name="ary">Byte array.</param>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ByteArrayToULong(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Converts a specified segment of a byte array into a ulong.
+            </summary>
+            <remarks>ByteArrayToULong(byte[] ary, int startIndex, int length = 0) has the same functionality as
+            (ulong) BitConverter.ToInt16(byte[] value, int startIndex), except you won't get accidentally skrew
+            up your code when you realize your machine is littleEndian.
+            The length parameter adds extra functionality of being able to convert fewer than 2 bytes if desired.</remarks>
+            <param name="ary">Byte array.</param>
+            <param name="startIndex">The start index of the segment in the byte array to be converted.</param>
+            <param name="length">The length of the segment to be converted.</param>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ByteArrayToULong(System.Byte[],System.Int32)">
+            <summary>
+            Converts a specified segment of a byte array into a ulong.
+            </summary>
+            <remarks>ByteArrayToULong(byte[] ary, int startIndex, int length = 0) has the same functionality as
+            (ulong) BitConverter.ToInt16(byte[] value, int startIndex), except you won't get accidentally skrew
+            up your code when you realize your machine is littleEndian.
+            The length parameter adds extra functionality of being able to convert fewer than 2 bytes if desired.</remarks>
+            <param name="ary">Byte array.</param>
+            <param name="startIndex">The start index of the segment in the byte array to be converted.</param>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ByteArrayToULong(System.Byte[])">
+            <summary>
+            Converts a specified segment of a byte array into a ulong.
+            </summary>
+            <remarks>ByteArrayToULong(byte[] ary, int startIndex, int length = 0) has the same functionality as
+            (ulong) BitConverter.ToInt16(byte[] value, int startIndex), except you won't get accidentally skrew
+            up your code when you realize your machine is littleEndian.
+            The length parameter adds extra functionality of being able to convert fewer than 2 bytes if desired.</remarks>
+            <param name="ary">Byte array.</param>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ByteArrayToLong(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Converts a specified segment of a byte array into a long.
+            </summary>
+            <remarks>ByteArrayToLong(byte[] ary, int startIndex, int length = 0) has the same functionality as
+            (long) BitConverter.ToInt16(byte[] value, int startIndex), except you won't get accidentally skrew
+            up your code when you realize your machine is littleEndian.
+            The length parameter adds extra functionality of being able to convert fewer than 2 bytes if desired.</remarks>
+            <param name="ary">Byte array.</param>
+            <param name="startIndex">The start index of the segment in the byte array to be converted.</param>
+            <param name="length">The length of the segment to be converted.</param>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ByteArrayToLong(System.Byte[],System.Int32)">
+            <summary>
+            Converts a specified segment of a byte array into a long.
+            </summary>
+            <remarks>ByteArrayToLong(byte[] ary, int startIndex, int length = 0) has the same functionality as
+            (long) BitConverter.ToInt16(byte[] value, int startIndex), except you won't get accidentally skrew
+            up your code when you realize your machine is littleEndian.
+            The length parameter adds extra functionality of being able to convert fewer than 2 bytes if desired.</remarks>
+            <param name="ary">Byte array.</param>
+            <param name="startIndex">The start index of the segment in the byte array to be converted.</param>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ByteArrayToLong(System.Byte[])">
+            <summary>
+            Converts a specified segment of a byte array into a long.
+            </summary>
+            <remarks>ByteArrayToLong(byte[] ary, int startIndex, int length = 0) has the same functionality as
+            (long) BitConverter.ToInt16(byte[] value, int startIndex), except you won't get accidentally skrew
+            up your code when you realize your machine is littleEndian.
+            The length parameter adds extra functionality of being able to convert fewer than 2 bytes if desired.</remarks>
+            <param name="ary">Byte array.</param>
+        </member>
+        <member name="M:Global.Conversions.Conversions.BinaryToByteArray(System.String)">
+            <summary>
+            Converts a binary string to a byte array.
+            </summary>
+            <param name="bin">Binary string.</param>
+            <returns>Byte array.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.BinaryToByteArray(System.String,System.Int32)">
+            <summary>
+            Converts a binary string to a byte array.
+            </summary>
+            <param name="bin">Binary string.</param>
+            <param name="length">Desired length of byte array.</param>
+            <returns>Byte array.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.HexStringToByteArray(System.String)">
+            <summary>
+            Converts a hexadecimal string to a byte array.
+            </summary>
+            <param name="hexString">Hexidecimal string.</param>
+            <returns>Byte array.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.HexStringToByteArray(System.String,System.Int32)">
+            <summary>
+            Converts any standard format hex string into a byte array of desired length.
+            </summary>
+            <param name="hexString">Hexadecimal string.</param>
+            <param name="arrayLength">Desired length of byte array. OverflowException if number of bytes in hex string is greater than ArrayLength.</param>
+            <returns>Byte array with specified length.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToBinary(System.Byte[])">
+            <summary>
+            Converts a byte array into a binary string. 
+            </summary>
+            <returns>Hexadecimal string without dashes, spaces, or hex indicator.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.BinaryToSByte(System.String)">
+            <summary>
+            Converts a binary string to a signed byte.
+            </summary>
+            <param name="bin">Binary string</param>
+            <exception cref="T:System.OverflowException">Thrown when the given string contains more bytes than an signed byte can represent.</exception>
+        </member>
+        <member name="M:Global.Conversions.Conversions.BinaryToByte(System.String)">
+            <summary>
+            Converts a binary string to a byte.
+            </summary>
+            <param name="bin">Binary string</param>
+            <exception cref="T:System.OverflowException">Thrown when the given string contains more bytes than a byte can represent.</exception>
+        </member>
+        <member name="M:Global.Conversions.Conversions.BinaryToShort(System.String)">
+            <summary>
+            Converts a binary string to a short.
+            </summary>
+            <param name="bin">Binary string</param>
+            <exception cref="T:System.OverflowException">Thrown when the given string contains more bytes than a short can represent.</exception>
+        </member>
+        <member name="M:Global.Conversions.Conversions.BinaryToUShort(System.String)">
+            <summary>
+            Converts a binary string to an unsigned.
+            </summary>
+            <param name="bin">Binary string</param>
+            <exception cref="T:System.OverflowException">Thrown when the given string contains more bytes than an unsigned short can represent.</exception>
+        </member>
+        <member name="M:Global.Conversions.Conversions.BinaryToInt(System.String)">
+            <summary>
+            Converts a binary string to an int.
+            </summary>
+            <param name="bin">Binary string</param>
+            <exception cref="T:System.OverflowException">Thrown when the given string contains more bytes than an int can represent.</exception>
+        </member>
+        <member name="M:Global.Conversions.Conversions.BinaryToUInt(System.String)">
+            <summary>
+            Converts a binary string to an unsigned int.
+            </summary>
+            <param name="bin">Binary string</param>
+            <exception cref="T:System.OverflowException">Thrown when the given string contains more bytes than an unsigned int can represent.</exception>
+        </member>
+        <member name="M:Global.Conversions.Conversions.BinaryToLong(System.String)">
+            <summary>
+            Converts a binary string to an signed byte.
+            </summary>
+            <param name="bin">Binary string</param>
+            <exception cref="T:System.OverflowException">Thrown when the given string contains more bytes than an sbyte can represent.</exception>
+        </member>
+        <member name="M:Global.Conversions.Conversions.BinaryToULong(System.String)">
+            <summary>
+            Converts a binary string to an unsigned long.
+            </summary>
+            <param name="bin">Binary string</param>
+            <exception cref="T:System.OverflowException">Thrown when the given string contains more bytes than an unsigned long can represent.</exception>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToBinary(System.SByte)">
+            <summary>
+            Converts an integral data type to a binary string.
+            </summary>
+            <param name="num">Number to be converted.</param>
+            <returns>Binary string.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToBinary(System.Int16)">
+            <summary>
+            Converts an integral data type to a binary string.
+            </summary>
+            <param name="num">Number to be converted.</param>
+            <returns>Binary string.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToBinary(System.Int32)">
+            <summary>
+            Converts an integral data type to a binary string.
+            </summary>
+            <param name="num">Number to be converted.</param>
+            <returns>Binary string.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToBinary(System.Int64)">
+            <summary>
+            Converts an integral data type to a binary string.
+            </summary>
+            <param name="num">Number to be converted.</param>
+            <returns>Binary string.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToBinary(System.Byte)">
+            <summary>
+            Converts an integral data type to a binary string.
+            </summary>
+            <param name="num">Number to be converted.</param>
+            <returns>Binary string.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToBinary(System.UInt16)">
+            <summary>
+            Converts an integral data type to a binary string.
+            </summary>
+            <param name="num">Number to be converted.</param>
+            <returns>Binary string.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToBinary(System.UInt32)">
+            <summary>
+            Converts an integral data type to a binary string.
+            </summary>
+            <param name="num">Number to be converted.</param>
+            <returns>Binary string.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToBinary(System.UInt64)">
+            <summary>
+            Converts an integral data type to a binary string.
+            </summary>
+            <param name="num">Number to be converted.</param>
+            <returns>Binary string.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToBinary(System.SByte,System.Int32)">
+            <summary>
+            Converts an integral data type to a binary string of desired length.
+            </summary>
+            <param name="num">Number to be converted.</param>
+            <param name="length">Desired minimum length of binary string.</param>
+            <returns>Binary string.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToBinary(System.Int16,System.Int32)">
+            <summary>
+            Converts an integral data type to a binary string of desired length.
+            </summary>
+            <param name="num">Number to be converted.</param>
+            <param name="length">Desired minimum length of binary string.</param>
+            <returns>Binary string.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToBinary(System.Int32,System.Int32)">
+            <summary>
+            Converts an integral data type to a binary string of desired length.
+            </summary>
+            <param name="num">Number to be converted.</param>
+            <param name="length">Desired minimum length of binary string.</param>
+            <returns>Binary string.</returns>
+            <returns>Binary string.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToBinary(System.Int64,System.Int32)">
+            <summary>
+            Converts an integral data type to a binary string of desired length.
+            </summary>
+            <param name="num">Number to be converted.</param>
+            <param name="length">Desired minimum length of binary string.</param>
+            <returns>Binary string.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToBinary(System.Byte,System.Int32)">
+            <summary>
+            Converts an integral data type to a binary string of desired length
+            </summary>
+            <param name="num">Number to be converted.</param>
+            <param name="length">Desired length of the binary string.</param>
+            <returns>Binary string.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToBinary(System.UInt16,System.Int32)">
+            <summary>
+            Converts an integral data type to a binary string of desired length.
+            </summary>
+            <param name="num">Number to be converted.</param>
+            <param name="length">Desired length of the binary string.</param>
+            <returns>Binary string.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToBinary(System.UInt32,System.Int32)">
+            <summary>
+            Converts an integral data type to a binary string of desired length
+            </summary>
+            <param name="num">Number to be converted.</param>
+            <param name="length">Desired length of the binary string.</param>
+            <returns>Binary string.</returns>
+        </member>
+        <member name="M:Global.Conversions.Conversions.ToBinary(System.UInt64,System.Int32)">
+            <summary>
+            Converts an integral data type to a binary string of desired length.
+            </summary>
+            <param name="num">Number to be converted.</param>
+            <param name="length">Desired length of the binary string.</param>
+            <returns>Binary string.</returns>
+        </member>
+        <member name="T:Global.Conversions.FastByteArrayToHexString">
+            <summary>
+            If you need to perform a large number of byte array to hex string
+            conversions, you should instantiate a FastByteArrayToHexString object
+            instead of using its sister static class ByteArrayToHexString.
+            This object contains a lookup table that vastly improves performance.
+            Modified rom stack overflow by CodesInChaos https://stackoverflow.com/questions/311165/how-do-you-convert-a-byte-array-to-a-hexadecimal-string-and-vice-versa/24343727#24343727
+            </summary>
+        </member>
+        <member name="M:Global.Conversions.FastByteArrayToHexString.#ctor">
+            <summary>
+            When instanciated, this class creates a lookup table that can be used
+            to perform many conversions with decent proformance.
+            </summary>
+        </member>
+        <member name="M:Global.Conversions.FastByteArrayToHexString.ByteArrayToHexString(System.Byte[])">
+            <summary>
+            Converts a byte array to a hexidecimal string.
+            </summary>
+            <param name="bytes"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

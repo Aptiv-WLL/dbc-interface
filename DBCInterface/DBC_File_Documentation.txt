@@ -1,0 +1,181 @@
+###########################################################################
+###########################################################################
+#      ####      ######       ####  #####                             #####
+#  ###  ###  ###  ####   ####  ###  #####                             #####
+#  ####  ##  ####  ##   ##########  #####    DBC File Documentation   #####
+#  ####  ##  ###  ###  ###########  #####                             #####
+#  ####  ##      ####  ###########  #####                             #####
+#  ####  ##  ###  ###  ###########  #######################################
+#  ####  ##  ####  ##   ###################################################
+#  ###  ###  ###  ####   ####  ###  #######################################
+#      ####      ######       ####  #######################################
+###########################################################################
+###########################################################################
+
+Contributors: Sarah Brugger (feel free to ask me if you have questions!)
+
+---------------------------------------------------------------------------
+		Overview
+---------------------------------------------------------------------------
+
+		This is a run down of the meaning behind all the stuff you'll see if you open a DBC file in a text editor.
+
+		The information in this document was either procured through examination of DBC files in a text editor, cross referencing with how they appear in Vector CANdb++ Editor or found at the following URL: http://www.socialledge.com/sjsu/index.php?title=DBC_Format.
+
+---------------------------------------------------------------------------
+		Contents
+---------------------------------------------------------------------------
+
+
+	1. 	NS_ (New Symbols)
+	2.	BS_ (lol ?? don't care)
+	3. 	BU_ (ECU's)
+	4. 	BO_ (Messages->Signals)
+	5. 	CM_ (Functionality Descriptions)
+	6. 	BA_DEF_ (Base Attributes -> Definitions)
+	7. 	BA_DEF_DEF_ (Base Attributes -> Definitions -> Default Values)
+	8. 	BA_ (Base Attributes)
+	9. 	VAL_ (Specified Signal Values)
+	10. 	SIG_GROUP_ (Signal Groupings)
+
+
+---------------------------------------------------------------------------
+	1. 	NS_ (New Symbols)
+---------------------------------------------------------------------------
+
+	Symbols to add to the symbol library (NS_Lib), delimited by whitespace.
+	**Figure more out about NS_Lib's uses and fill in here 
+
+---------------------------------------------------------------------------
+	2.	BS_ (lol ?? don't care)
+---------------------------------------------------------------------------
+
+	We don't really know what this is, but that's okay because we don't really care all that much anyway. Plus it's generally empty.
+
+	If you figure out what this is, please put that here! 
+
+
+---------------------------------------------------------------------------
+	3. 	BU_ (ECU's)
+---------------------------------------------------------------------------
+
+	ECUs to be added to the ECU library (ECU_Lib), delimited by whitespace.
+
+
+---------------------------------------------------------------------------
+	4. 	BO_ (Messages->Signals)
+---------------------------------------------------------------------------
+
+	A message, with the signals associated with the message listed underneath.
+
+	Components of a message:
+	
+		* Message ID
+		* Message Name
+		* Message length in bytes
+		* Associated ECU
+
+	Components of a signal:
+
+		* Associated Message ID
+		* Signal Name
+		* Mode
+		* Start bit
+		* Length
+		* Direction (little vs big endian)
+		* Signed vs Unsinged
+		* Factor & Offset
+		* Physical minimum & maximum
+		* Physical units
+		* Response ECU
+
+	BO_ tag format:
+
+		BO_ <ID> <Message Name>: <message length (bytes)> <ECU>
+		 SG_ <Signal Name> <Multiplexer (optional)> : <start bit>|<length>@<little endian (1) or big endian (0)><unsigned (+) or signed (-)> (<Factor>,<Offset>) [<min>,<max>] "<physical units>" <Response ECUs, delimited by commas>
+		 ... more signals ...
+
+	Example: 
+
+		BO_ 2365443105 OEL_21: 8 Vector__XXX
+		 SG_ MainLightSw  : 4|4@1+ (1,0) [0|15] "" NIS
+		 SG_ TurnSigSw  : 8|4@1+ (1,0) [0|15] "" NIS
+		 SG_ OpsDesBackLight  : 16|8@1+ (0.4,0) [0|100] "%" NIS
+
+	The MainLightSw signal in this example has the following properties:
+		
+		* 4|4@1+ --> Starts at bit 4, is of length 4, is little endian, and is unsigned
+		* (1,0) --> Has a factor of 1 and offset of 0
+		* [0, 15] --> minimum value is 0, maximum value is 15
+		* "" --> No units
+		* NIS --> Response ECU is NIS
+
+
+---------------------------------------------------------------------------
+	5. 	CM_ (Functionality Descriptions)
+---------------------------------------------------------------------------
+
+	These are comments on messages and/or signals.
+
+	Format for a comment on a message:
+		
+		CM_ BO_ <Message ID> "<comment>";
+
+	Format for a comment on a signal:
+		
+		CM_ SG_ <Message ID> <Signal Name> "<comment>";
+
+
+---------------------------------------------------------------------------
+	6. 	BA_DEF_ (Base Attributes -> Definitions)
+---------------------------------------------------------------------------
+
+	Base attributes can be defined with or without an additional tag that indicates if it is associated with messages, ECUs, or signals. The base attribute definition lines are formatted as follows:
+
+		BA_DEF_ <Optional BO_/BU_/SG_> "<Attribute Name>" <Type> <setting options>;
+
+---------------------------------------------------------------------------
+	7. 	BA_DEF_DEF_ (Base Attributes -> Definitions -> Default Values)
+---------------------------------------------------------------------------
+
+		Defines the default setting for a base attribute. Format:
+			
+			BA_DEF_DEF_ "<Attribute Name>" <default setting>;
+
+
+---------------------------------------------------------------------------
+	8. 	BA_ (Base Attributes)
+---------------------------------------------------------------------------
+
+		Sets a base attribute as something besides the default. Format:
+
+			BA_ "<Attribute Name>" <optional BO_/BU_/SG_> <Message/ECU/Signal Name> <Setting>;
+
+
+---------------------------------------------------------------------------
+	9. 	VAL_ (Specified Signal Values)
+---------------------------------------------------------------------------
+
+	These are descriptions for the different values that the signal could have.
+
+	Format for Specified Signal Values:
+	
+		VAL_ <Message ID> <Signal Name> <Value> "<Description>" <Value> "<Description>" <Value> "<Description>" ...
+
+	Example:
+
+		VAL_ 1003 VC_VehCfg4_Stat 0 "NA" 1 "PROGAMMED" 2 "REQUEST_DATA" 3 "SNA" ;
+
+	The VC_VehCfg4_Stat in message 1003 has the following values:
+
+		Value	Description
+	
+		0	NA
+		1	PROGAMMED
+		2	REQUEST_DATA
+		3	SNA
+
+
+---------------------------------------------------------------------------
+	10. 	SIG_GROUP_ (Signal Groupings)
+---------------------------------------------------------------------------

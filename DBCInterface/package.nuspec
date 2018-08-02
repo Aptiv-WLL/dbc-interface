@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <!--*-->
+    <id>DBCInterface</id>
+    <!--*-->
+    <version>1.2.1</version>
+    <title>DBCInterface</title>
+    <!--*-->
+    <authors>Aptiv WLL</authors>
+    <owners>Aptiv WLL</owners>
+    <!--
+    <licenseUrl></licenseUrl>
+    <projectUrl></projectUrl>
+    <iconUrl></iconUrl>
+-->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <!--*-->
+    <description>Allows interfacing with DBC files and provides a set of Message objects for tracking CAN messages.</description>
+    <!--*-->
+    <releaseNotes>Added an Update function to IDBCMessages.</releaseNotes>
+    <copyright>Copyright © Aptiv WLL 2018</copyright>
+    <tags>
+    </tags>
+    <dependencies>
+      <group targetFramework="net45">
+        <dependency id="GlobalLibrary" version="1.0.0" />
+        <dependency id="SaintInterface" version="3.0.0.4" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
